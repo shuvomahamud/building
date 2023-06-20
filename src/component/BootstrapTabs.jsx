@@ -1,6 +1,7 @@
 import React from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 import DynamicForm from './DynamicForm';
+import TableForm from './TableForm';
 
 function BootstrapTabs() {
       let generalBuildingInfo = [
@@ -39,6 +40,13 @@ function BootstrapTabs() {
         { name: 'Est_Height_per_Floor_ft', type: 'number' },
         { name: 'Azimuth_of_North_Face', type: 'number' },
       ];
+
+      const roofFields = [
+        { name: 'FD_Id', type: 'text' },
+        { name: 'Length', type: 'number' },
+        { name: 'Width', type: 'number' },
+        { name: 'Shape', type: 'text' },
+      ];
       
 
       const tableName = "buildings";
@@ -46,6 +54,9 @@ function BootstrapTabs() {
         <Tabs defaultActiveKey="general" id="uncontrolled-tab-example" className="mb-3">
           <Tab eventKey="general" title="General Info">
             <DynamicForm fields={generalBuildingInfo} numericFields={numericFields} apiUrl="http://127.0.0.1/webservices/connect.php" tableName={tableName} />
+          </Tab>
+          <Tab eventKey="roofCalc" title="Roof Calc">
+            <TableForm fields={roofFields} />
           </Tab>
           <Tab eventKey="others" title="Other Info">
             {/* Add your other components here */}
