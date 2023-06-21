@@ -10,11 +10,11 @@ const TableForm = ({ fields, numericFields, apiUrl, tableName }) => {
 
   useEffect(() => {
     if (buildingId) {
-      fetch(`${apiUrl}?buildingId=${buildingId}`)
+      fetch(`${apiUrl}?buildingId=${buildingId}&tablename=${tableName}`)
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success' && data.records) {
-            console.log(data.records)
+            setRows(data.records);
           }
         })
         .catch((error) => {

@@ -41,17 +41,26 @@ function BootstrapTabs() {
         { name: 'Azimuth_of_North_Face', type: 'number' },
       ];
 
-      const roofFields = [
+      const facadeFields = [
         { name: 'FD_Id', type: 'text' },
         { name: 'Length', type: 'number' },
         { name: 'Width', type: 'number' },
         { name: 'Shape', type: 'text' },
       ];
 
-      const roofFieldsNumberic = [
+      const facadeFieldsNumberic = [
         'Length','Width', 'BuildingId',
       ];
       
+      const roofTopFields = [
+        { name: 'RD_ID', type: 'text' },
+        { name: 'Length', type: 'number' },
+        { name: 'Width', type: 'number' },
+      ];
+
+      const roofTopFieldsNumberic = [
+        'Length','Width', 'BuildingId',
+      ];
 
       const tableName = "buildings";
       return (
@@ -60,8 +69,10 @@ function BootstrapTabs() {
             <DynamicForm fields={generalBuildingInfo} numericFields={numericFields} apiUrl="http://127.0.0.1/webservices/connect.php" tableName={tableName} />
           </Tab>
           <Tab eventKey="roofCalc" title="Roof Calc">
-            <TableForm fields={roofFields} numericFields={roofFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="roofcalc" />
+            <TableForm fields={facadeFields} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="facadeDeduction" />
+            <TableForm fields={roofTopFields} numericFields={roofTopFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="rooftopDeduction" />
           </Tab>
+          
           <Tab eventKey="others" title="Other Info">
             {/* Add your other components here */}
           </Tab>
