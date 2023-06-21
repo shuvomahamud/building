@@ -47,6 +47,10 @@ function BootstrapTabs() {
         { name: 'Width', type: 'number' },
         { name: 'Shape', type: 'text' },
       ];
+
+      const roofFieldsNumberic = [
+        'Length','Width', 'BuildingId',
+      ];
       
 
       const tableName = "buildings";
@@ -56,7 +60,7 @@ function BootstrapTabs() {
             <DynamicForm fields={generalBuildingInfo} numericFields={numericFields} apiUrl="http://127.0.0.1/webservices/connect.php" tableName={tableName} />
           </Tab>
           <Tab eventKey="roofCalc" title="Roof Calc">
-            <TableForm fields={roofFields} />
+            <TableForm fields={roofFields} numericFields={roofFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="roofcalc" />
           </Tab>
           <Tab eventKey="others" title="Other Info">
             {/* Add your other components here */}

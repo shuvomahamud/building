@@ -23,7 +23,7 @@ const DynamicForm = ({ fields, numericFields, apiUrl, tableName }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const numericFieldValues = numericFields.reduce((obj, field) => {
-      return {...obj, [field.name]: formState[field.name]}
+      return { ...obj, [field.name]: formState[field.name] }
     }, {});
     const dataToSend = {
       fields: formState,
@@ -40,6 +40,10 @@ const DynamicForm = ({ fields, numericFields, apiUrl, tableName }) => {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
+        if (data.status === 'success' && data.id) {
+          // Save the id in the local storage
+          localStorage.setItem('buildingId', data.id);
+        }
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -52,7 +56,7 @@ const DynamicForm = ({ fields, numericFields, apiUrl, tableName }) => {
         {fields.map((field, index) => (
           <Form.Group key={index} controlId={`formBasic${field.name}`}>
             <Form.Label>{field.name}</Form.Label>
-            <Form.Control 
+            <Form.Control
               type={field.type}
               name={field.name}
               value={formState[field.name] || ""}
