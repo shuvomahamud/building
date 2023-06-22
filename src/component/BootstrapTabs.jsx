@@ -67,6 +67,17 @@ function BootstrapTabs() {
         { name: 'Length', type: 'number' },
         { name: 'Width', type: 'number' },];
 
+    const windowCalc = [
+        { name: 'Id', type: 'text' },
+        { name: 'Length_in', type: 'number' },
+        { name: 'Width_in', type: 'number' },
+        { name: 'CountEast', type: 'number' },
+        { name: 'CountWest', type: 'number' },
+        { name: 'CountNorth', type: 'number' },
+        { name: 'CountSouth', type: 'number' },
+    ]
+    const windowFieldsNumeric = ['Length_in','Width_in','CountEast','CountWest','CountNorth','CountSouth', 'BuildingId',]
+
     const tableName = "buildings";
     return (
         <Tabs defaultActiveKey="general" id="uncontrolled-tab-example" className="mb-3">
@@ -83,9 +94,8 @@ function BootstrapTabs() {
                 <TableForm fields={wall} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="eastWall" />
                 <TableForm fields={wall} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="westWall" />
             </Tab>
-
-            <Tab eventKey="others" title="Other Info">
-                {/* Add your other components here */}
+            <Tab eventKey="windowCalc" title="Window Calc">
+                <TableForm fields={windowCalc} numericFields={windowFieldsNumeric} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="windowCalc" />
             </Tab>
         </Tabs>
     );
