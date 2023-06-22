@@ -62,6 +62,11 @@ function BootstrapTabs() {
         'Length','Width', 'BuildingId',
       ];
 
+      const wall= [        
+        { name: 'Id', type: 'text' },
+      { name: 'Length', type: 'number' },
+      { name: 'Width', type: 'number' },];
+
       const tableName = "buildings";
       return (
         <Tabs defaultActiveKey="general" id="uncontrolled-tab-example" className="mb-3">
@@ -71,6 +76,12 @@ function BootstrapTabs() {
           <Tab eventKey="roofCalc" title="Roof Calc">
             <TableForm fields={facadeFields} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="facadeDeduction" />
             <TableForm fields={roofTopFields} numericFields={roofTopFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="rooftopDeduction" />
+          </Tab>
+          <Tab eventKey="wallCalc" title="Wall Calc">
+            <TableForm fields={wall} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="northWall" />
+            <TableForm fields={wall} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="southWall" />
+            <TableForm fields={wall} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="eastWall" />
+            <TableForm fields={wall} numericFields={facadeFieldsNumberic} apiUrl="http://127.0.0.1/webservices/roofCalc.php" tableName="westWall" />
           </Tab>
           
           <Tab eventKey="others" title="Other Info">
